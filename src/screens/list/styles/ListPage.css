@@ -1,0 +1,45 @@
+.list-container {
+    padding: 20px;
+  }
+  
+  .list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .list-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .list-title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .list-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .join-button {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .join-button:hover {
+    background-color: #0056b3;
+  }
+  
