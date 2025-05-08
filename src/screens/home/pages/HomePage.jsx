@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '/home/user/empty-lecture-buddy/src/screens/home/styles/HomePage.css'
 
 const categories = [
@@ -9,6 +10,7 @@ const Home = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
+    const navigate = useNavigate();
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -20,12 +22,12 @@ const Home = () => {
           return;
         }
         console.log({ title, description, selectedCategory });
-        alert('제출되었습니다!');
+        alert('검색되었습니다!');
     };
 
     return (
         <div className="home-container">
-          <h2>모임 만들기</h2>
+          <h2>모임 검색하기</h2>
     
           <div className="input-group">
             <label>모임 이름</label>
@@ -66,7 +68,11 @@ const Home = () => {
 
     
           <button className="submit-button" onClick={handleSubmit}>
-            등록하기
+            검색하기
+          </button>
+
+          <button className="fab-button" onClick={() => navigate('/edit')}>
+            +
           </button>
         </div>
       );
