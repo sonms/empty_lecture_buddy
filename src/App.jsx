@@ -43,14 +43,14 @@ function App() {
           <Route
             path="/"
             element={
-              isLoggedIn ? <Navigate to="/home" /> : <LoginForm onLogin={handleLogin} />
+              isLoggedIn ? <Navigate to="/home" /> : <LoginForm onLogin={handleLogin}/>
             }
           />
           
           {/* 회원가입 */}
           <Route
             path="/signup"
-            element={<SignUpPage onSignup={handleSignup} />}
+            element={<SignUpPage />}
           />
           
           

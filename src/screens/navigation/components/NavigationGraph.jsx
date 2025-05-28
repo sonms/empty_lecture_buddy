@@ -7,6 +7,8 @@ import MyPost from '/home/user/empty-lecture-buddy/src/screens/profile/pages/det
 import MyParticipating from '/home/user/empty-lecture-buddy/src/screens/profile/pages/detail/MyParticipatingPage.jsx';
 import SignUpPage from '/home/user/empty-lecture-buddy/src/screens/signup/pages/SignUpForm.jsx';
 import EditPage from '/home/user/empty-lecture-buddy/src/screens/edit/components/pages/EditPage.jsx';
+import SearchPage from '/home/user/empty-lecture-buddy/src/screens/home/pages/SearchPage.jsx';
+import LoginForm from '../../login/pages/LoginForm';
 
 const NavigationGraph = () => {
   return (
@@ -18,6 +20,8 @@ const NavigationGraph = () => {
       <Route path="/profile/myparticipating" element={<MyParticipating />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/edit" element={<EditPage />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/" element={<LoginForm />} />
     </Routes>
   );
 };
