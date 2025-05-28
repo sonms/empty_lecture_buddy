@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import '/home/user/empty-lecture-buddy/src/screens/login/styles/LoginForm.css';
 import { Link } from 'react-router-dom';
+import ApiService from '/home/user/empty-lecture-buddy/src/domain/ApiService.js';
 
 function LoginForm({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // 로그인 로직 실행
-    onLogin(email, password);
+    try {
+      const { token, user } = await ApiService.login(email, password);
+      alert(`${user.nickname}님 환영합니다!`);
+      console.log(token)
+      onLogin(email, password);
+    } catch (error) {
+      alert('로그인 실패: ' + (error.response?.data?.message || error.message));
+    }
   };
 
   return (
