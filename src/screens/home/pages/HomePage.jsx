@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '/home/user/empty-lecture-buddy/src/screens/home/styles/HomePage.css'
 
@@ -10,19 +11,33 @@ const Home = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
+    const [formData, setFormData] = useState({ distance: '' });
+  
     const navigate = useNavigate();
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
     };  
 
+    const handleChange = (key, value) => {
+      setFormData((prev) => ({ ...prev, [key]: value }));
+    };
+
     const handleSubmit = () => {
-        if (!title || !description || !selectedCategory) {
-          alert('모든 항목을 입력해주세요.');
-          return;
-        }
-        console.log({ title, description, selectedCategory });
-        alert('검색되었습니다!');
+      const params = {
+        title,
+        description,
+        category: selectedCategory,
+        startTime,
+        endTime,
+        maxDistance: 500
+      };
+      console.log(params)
+    
+
+        navigate('/search', { state: params });
     };
 
     return (
@@ -50,20 +65,54 @@ const Home = () => {
             />
           </div>
     
+          <div className="form-group">
+              <label>카테고리</label>
+              <div className="category-grid">
+              {categories.map((cat) => (
+                  <div
+                  key={cat}
+                  className={`category-option ${selectedCategory === cat ? 'selected' : ''}`}
+                  onClick={() => handleCategoryClick(cat)}
+                  >
+                  <span className="round-indicator" />
+                  <span>{cat}</span>
+                  </div>
+              ))}
+              </div>
+          </div>
+
+          <div className="form-group">
+          <label>시작 시간</label>
+          <input
+            type="datetime-local"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+          />
+        </div>
+
         <div className="form-group">
-            <label>카테고리</label>
-            <div className="category-grid">
-            {categories.map((cat) => (
-                <div
-                key={cat}
-                className={`category-option ${selectedCategory === cat ? 'selected' : ''}`}
-                onClick={() => handleCategoryClick(cat)}
-                >
-                <span className="round-indicator" />
-                <span>{cat}</span>
-                </div>
+          <label>종료 시간</label>
+          <input
+            type="datetime-local"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>거리</label>
+          <div className="grid-box">
+            {['500m', '1km', '5km', '10km', '캠퍼스 전체'].map((d) => (
+              <label key={d}>
+                <input
+                  type="radio"
+                  checked={formData.distance === d}
+                  onChange={() => handleChange('distance', d)}
+                />
+                {d}
+              </label>
             ))}
-            </div>
+          </div>
         </div>
 
     
