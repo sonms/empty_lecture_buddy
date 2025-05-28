@@ -5,9 +5,9 @@ import '/home/user/empty-lecture-buddy/src/screens/profile/styles/ProfilePage.cs
 const MyPage = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = () => { 
     alert('로그아웃 되었습니다!');
-    // 실제 로그아웃 로직 추가 필요
+    navigate('/');
   };
 
   return (
