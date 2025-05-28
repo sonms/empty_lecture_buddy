@@ -51,3 +51,45 @@
     background-color: #673ab7;
   }
   
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .category-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 14px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .category-option:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+  }
+  
+  .category-option.selected {
+    border-color: #007bff;
+    background-color: #e6f3ff;
+  }
+  
+  .round-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: white;
+  }
+  
+  .category-option.selected .round-indicator {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
